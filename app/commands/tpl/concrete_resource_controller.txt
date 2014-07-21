@@ -1,0 +1,8 @@
+<?php
+
+class {$resource}Controller extends Abstract{$resource}Controller {
+
+    //modify this class for your advanced needs of resource controller.
+    //this file is generated one and will not overwrite your modifications
+
+}
