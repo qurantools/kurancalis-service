@@ -1,0 +1,1 @@
+/Users/kurtulus/Sites/kurancalis/app/views/deners/index.blade.php
