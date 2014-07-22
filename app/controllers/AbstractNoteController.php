@@ -39,15 +39,21 @@ class AbstractNoteController extends \BaseController {
         
         $resourceObj = new Note;
         
+        /*
         $resourceObj->username = Request::get('username');
         $resourceObj->email = Request::get('email');
         $resourceObj->password = Hash::make(Request::get('password'));
         $resourceObj->name = Request::get('name');
+        */
+        
+        $validator = Validator::make($data = Input::all(), Note::$rules);
 
-        // Validation and Filtering is sorely needed!!
-        // Seriously, I'm a bad person for leaving that out.
- 
-        $resourceObj->save();
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        $resourceObj->create($data);
  
         return Response::json(
         array(
@@ -99,32 +105,23 @@ class AbstractNoteController extends \BaseController {
      */
     public function update($id)
     {
-        $resourceObj = Note::find( $id);
+        $resourceObj = Note::findOrFail($id);
         
-        if ( Request::get('username') )
+       /* if ( Request::get('username') )
         {
             $resourceObj->username = Request::get('username');
         }
+        */        
         
-        if ( Request::get('email') )
+        $validator = Validator::make($data = Input::all(), Note::$rules);
+
+        if ($validator->fails())
         {
-            $resourceObj->email = Request::get('email');
+                return Redirect::back()->withErrors($validator)->withInput();
         }
-        
-        if ( Request::get('name') )
-        {
-            $resourceObj->name = Request::get('name');
-        }
-        
-        if ( Request::get('password') )
-        {
-            $resourceObj->password = Hash::make(Request::get('password'));
-        }
-        
-        
-        
-        $resourceObj->save();
-        
+
+        $resourceObj->update($data);
+
         return Response::json(array(
                 'error' => false,
                 'message' => 'user updated'),
@@ -141,7 +138,12 @@ class AbstractNoteController extends \BaseController {
      */
     public function destroy($id)
     {
-        //
+        Deneme::destroy($id);
+        return Response::json(array(
+                'error' => false,
+                'message' => 'Note deleted'),
+                200
+        );
     }
 
 
