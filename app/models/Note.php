@@ -1,20 +1,19 @@
 <?php
-
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Note extends Eloquent implements UserInterface, RemindableInterface {
+class Note extends Eloquent {
 
-	use UserTrait, RemindableTrait;
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = "note";
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'note';
-
-
+    public $timestamps = false;
+    
+    public $primaryKey = "id";
 }

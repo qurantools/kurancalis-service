@@ -1,4 +1,4 @@
-<?php
+<{$qm}php
 
 class Abstract{$resource}Controller extends \BaseController {
 
@@ -12,7 +12,7 @@ class Abstract{$resource}Controller extends \BaseController {
         $resourceObj = {$resource}::all();
         return Response::json(array(
                 'error' => false,
-                'users' => $resourceObj->toArray()),
+                '{$table}_list' => $resourceObj->toArray()),
                 200
         );
     }
@@ -79,7 +79,7 @@ class Abstract{$resource}Controller extends \BaseController {
      
         return Response::json(array(
             'error' => false,
-            'users' => $resourceObj->toArray()),
+            '{$table}_list' => $resourceObj->toArray()),
             200
         );
     }

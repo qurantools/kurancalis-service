@@ -3,7 +3,6 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-require_once 'GenericModel.php';
 require_once 'rain.tpl.class.php';
 
 class GenerateResourceClasses extends Command {
@@ -48,7 +47,7 @@ class GenerateResourceClasses extends Command {
 			die('Could not connect: ' . mysql_error());
 		}
 		mysql_select_db($arguments['db']);
-		$result = mysql_query('select * from '.$arguments['table']);
+		$result = mysql_query('select * from kc_'.$arguments['table']);
 		if (!$result) {
 			die('Query failed: ' . mysql_error());
 		}
@@ -81,14 +80,30 @@ class GenerateResourceClasses extends Command {
 		$tpl = new raintpl();
 		
 		$table = $arguments['table'];
-		$resource = ucfirst($table);
-		$tpl->assign("resource",$resource);
+		$resource = $arguments['resource_name'];
+		$tpl->assign("resource",$resource );
 		$tpl->assign("table",$table);
+		$tpl->assign("qm","?");
 		
 		
 		$output =  $tpl->draw("abstract_resource_controller",true);
 		
 		file_put_contents("app/controllers/Abstract".$resource."Controller.php", $output);
+		
+		$concreteTpl = new raintpl();
+		$concreteTpl->assign("resource",$resource);
+		$concreteTpl->assign("qm","?");
+		
+		$output =  $concreteTpl->draw("concrete_resource_controller",true);
+		file_put_contents("app/controllers/".$resource."Controller.php", $output);
+		
+		$modelTpl = new raintpl();
+		$modelTpl->assign("resource",$resource);
+		$modelTpl->assign("table",$table);
+		$modelTpl->assign("qm","?");
+		
+		$output =  $modelTpl->draw("data_model",true);
+		file_put_contents("app/models/".$resource.".php", $output);
 		
 	}
 
@@ -104,7 +119,8 @@ class GenerateResourceClasses extends Command {
 			array('user', InputArgument::REQUIRED, 'Mysql User.'),
 			array('pass', InputArgument::REQUIRED, 'Mysql Password.'),
 			array('db', InputArgument::REQUIRED, 'Mysql Database.'),
-			array('table', InputArgument::REQUIRED, 'Mysql Table.')
+			array('table', InputArgument::REQUIRED, 'Mysql Table.'),
+			array('resource_name', InputArgument::REQUIRED, 'Resource name.')
 		);
 	}
 

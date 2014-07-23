@@ -1,4 +1,4 @@
-&lt;?php
+<?php
 
 class AbstractNoteController extends \BaseController {
 
@@ -12,7 +12,7 @@ class AbstractNoteController extends \BaseController {
         $resourceObj = Note::all();
         return Response::json(array(
                 'error' => false,
-                'users' => $resourceObj->toArray()),
+                'note_list' => $resourceObj->toArray()),
                 200
         );
     }

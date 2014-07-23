@@ -1,4 +1,4 @@
-<?php
+<{$qm}php
 
 class {$resource}Controller extends Abstract{$resource}Controller {
 
