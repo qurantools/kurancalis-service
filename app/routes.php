@@ -1,7 +1,7 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
+ |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
@@ -16,30 +16,37 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('fbtest', function()
-{
-    return 'Users!';
-});
 
-
-
-Route::resource('user', 'UserController');
-Route::resource('user/', 'UserController');
 
 Route::group(array('prefix' => 'api/v1', 'before' => 'auth.facebook'), function()
 {
-    Route::resource('note', 'NoteController');
-    Route::resource('note/', 'NoteController');
+	Route::get('user/notes', 'UserController@notes');
+	Route::get('user/annotations', 'UserController@annotations');
+	Route::get('user/bookmarks', 'UserController@bookmarks');
 
-    Route::resource('annotation', 'AnnotationController');
-    Route::resource('annotation/', 'AnnotationController');
+	Route::get('verselink/incomings', 'VerseLinkController@incomings');
+	Route::get('verselink/outgoings', 'VerseLinkController@outgoings');
 
+	Route::resource('user', 'UserController');
+	Route::resource('user/', 'UserController');
+
+	Route::resource('note', 'NoteController');
+	Route::resource('note/', 'NoteController');
+
+	Route::resource('annotation', 'AnnotationController');
+	Route::resource('annotation/', 'AnnotationController');
+
+	Route::resource('bookmark', 'BookmarkController');
+	Route::resource('bookmark/', 'BookmarkController');
+
+	Route::resource('verselink', 'VerseLinkController');
+	Route::resource('verselink/', 'VerseLinkController');
 });
 
 Route::get('/authtest', array('before' => 'auth.basic', function()
-    {
-    return View::make('hello');
-    })
+{
+	return View::make('hello');
+})
 );
 
 Route::get('login/fb', 'FacebookController@login');
@@ -47,8 +54,8 @@ Route::get('login/fb/callback', 'FacebookController@callback');
 Route::get('/fb', 'FacebookController@status');
 
 Route::get('logout', function() {
-    Auth::logout();
-    return Redirect::to('/fb');
+	Auth::logout();
+	return Redirect::to('/fb');
 });
 
 

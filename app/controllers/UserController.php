@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 class UserController extends \BaseController {
 
 	/**
@@ -57,7 +59,36 @@ class UserController extends \BaseController {
 	    );
 	}
 
+	function notes() {
+		//get user from the session
+		$user = Auth::user();
+		return Response::json(array(
+				'error' => false,
+				'notes' => $user->notes),
+				200
+		);
+	}
 
+	function annotations() {
+		//get user from the session
+		$user = Auth::user();
+		return Response::json(array(
+				'error' => false,
+				'annotations' => $user->annotations),
+				200
+		);
+	}
+	
+	function bookmarks() {
+		//get user from the session
+		$user = Auth::user();
+		return Response::json(array(
+				'error' => false,
+				'bookmarks' => $user->bookmarks),
+				200
+		);
+	}
+	
 	/**
 	 * Display the specified resource.
 	 *
