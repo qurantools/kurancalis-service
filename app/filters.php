@@ -54,6 +54,15 @@ Route::filter('auth.basic', function()
 	return Auth::basic("username");
 });
 
+Route::filter('auth.facebook', function()
+{
+	if( !Auth::check() ){
+	    return Redirect::to('/fb');
+	}
+
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

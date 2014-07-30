@@ -90,20 +90,34 @@ class GenerateResourceClasses extends Command {
 		
 		file_put_contents("app/controllers/Abstract".$resource."Controller.php", $output);
 		
-		$concreteTpl = new raintpl();
-		$concreteTpl->assign("resource",$resource);
-		$concreteTpl->assign("qm","?");
-		
-		$output =  $concreteTpl->draw("concrete_resource_controller",true);
-		file_put_contents("app/controllers/".$resource."Controller.php", $output);
+		if( !file_exists("app/controllers/".$resource."Controller.php")){ //do not touch if exists
+			
+			$concreteTpl = new raintpl();
+			$concreteTpl->assign("resource",$resource);
+			$concreteTpl->assign("qm","?");
+			
+			$output =  $concreteTpl->draw("concrete_resource_controller",true);
+			file_put_contents("app/controllers/".$resource."Controller.php", $output);
+		}
 		
 		$modelTpl = new raintpl();
 		$modelTpl->assign("resource",$resource);
 		$modelTpl->assign("table",$table);
 		$modelTpl->assign("qm","?");
 		
-		$output =  $modelTpl->draw("data_model",true);
-		file_put_contents("app/models/".$resource.".php", $output);
+		$output =  $modelTpl->draw("abstract_data_model",true);
+		file_put_contents("app/models/Abstract".$resource."Model.php", $output);
+		
+		
+		if(!file_exists("app/models/".$resource.".php")){ //do not touch if exists
+			$modelTpl = new raintpl();
+			$modelTpl->assign("resource",$resource);
+			$modelTpl->assign("table",$table);
+			$modelTpl->assign("qm","?");
+			
+			$output =  $modelTpl->draw("data_model",true);
+			file_put_contents("app/models/".$resource.".php", $output);
+		}
 		
 	}
 

@@ -15,6 +15,7 @@ class UserController extends \BaseController {
 				'users' => $user->toArray()),
 				200
 		);
+		
 	}
 
 

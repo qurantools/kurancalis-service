@@ -79,7 +79,7 @@ class AbstractNoteController extends \BaseController {
      
         return Response::json(array(
             'error' => false,
-            'users' => $resourceObj->toArray()),
+            'note_list' => $resourceObj->toArray()),
             200
         );
     }
@@ -138,7 +138,7 @@ class AbstractNoteController extends \BaseController {
      */
     public function destroy($id)
     {
-        Deneme::destroy($id);
+        Note::destroy($id);
         return Response::json(array(
                 'error' => false,
                 'message' => 'Note deleted'),

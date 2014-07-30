@@ -1,19 +1,9 @@
 <?php
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+require_once ("AbstractNoteModel.php");
 
-class Note extends Eloquent {
+class Note extends AbstractNoteModel {
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = "note";
-
-    public $timestamps = false;
+    public static $rules = array();
     
-    public $primaryKey = "id";
+    
 }

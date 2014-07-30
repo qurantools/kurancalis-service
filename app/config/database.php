@@ -52,7 +52,7 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
+/*		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'dakik.ilerian.com',
 			'database'  => 'dakikkcm_krntest',
@@ -62,7 +62,18 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => 'kc_',
 		),
-
+*/
+			'mysql' => array(
+					'driver'    => 'mysql',
+					'host'      => 'localhost',
+					'database'  => 'dakikkcm_krntest',
+					'username'  => 'root',
+					'password'  => 'root',
+					'charset'   => 'utf8',
+					'collation' => 'utf8_unicode_ci',
+					'prefix'    => 'kc_',
+			),			
+			
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',

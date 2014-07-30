@@ -138,7 +138,7 @@ class Abstract{$resource}Controller extends \BaseController {
      */
     public function destroy($id)
     {
-        Deneme::destroy($id);
+        {$resource}::destroy($id);
         return Response::json(array(
                 'error' => false,
                 'message' => '{$resource} deleted'),
