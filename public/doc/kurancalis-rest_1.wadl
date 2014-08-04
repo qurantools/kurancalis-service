@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+  <doc xml:lang="en" title="kurancalis-rest"/>
+  <resources base="http://localhost:8888">
+    <resource path="kurancalis/public/api/v1/note/{id}" id="note">
+      <doc xml:lang="en" title="note"/>
+      <param name="id" type="xs:string" required="false" default="" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <method name="GET" id="get">
+        <doc xml:lang="en" title="get"/>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="add">
+        <doc xml:lang="en" title="add"/>
+        <request>
+          <param name="user_id" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="chapter" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="verse" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="content" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="color" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="translation_id" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="update">
+        <doc xml:lang="en" title="update"/>
+        <request>
+          <param name="content" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="delete">
+        <doc xml:lang="en" title="delete"/>
+        <request/>
+      </method>
+    </resource>
+    <resource path="kurancalis/public/api/v1/annotation/{id}" id="annotation">
+      <doc xml:lang="en" title="annotation"/>
+      <param name="id" type="xs:string" required="false" default="" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <method name="GET" id="get">
+        <doc xml:lang="en" title="get"/>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="add">
+        <doc xml:lang="en" title="add"/>
+        <request>
+          <param name="chapter" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="verse" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="content" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="color" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="translation_id" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="update">
+        <doc xml:lang="en" title="update"/>
+        <request>
+          <param name="content" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="delete">
+        <doc xml:lang="en" title="delete"/>
+        <request/>
+      </method>
+    </resource>
+    <resource path="kurancalis/public/api/v1/user/{id}" id="user">
+      <doc xml:lang="en" title="user"/>
+      <param name="id" type="xs:string" required="false" default="" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <method name="GET" id="get">
+        <doc xml:lang="en" title="get"/>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="update">
+        <doc xml:lang="en" title="update"/>
+        <request>
+          <param name="username" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="name" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="photo" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="kurancalis/public/api/v1/bookmark/{id}" id="bookmark">
+      <doc xml:lang="en" title="bookmark"/>
+      <param name="id" type="xs:string" required="false" default="" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <method name="GET" id="get">
+        <doc xml:lang="en" title="get"/>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="add">
+        <doc xml:lang="en" title="add"/>
+        <request>
+          <param name="chapter" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="verse" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="description" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="translation_id" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="update">
+        <doc xml:lang="en" title="update"/>
+        <request>
+          <param name="description" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="delete">
+        <doc xml:lang="en" title="delete"/>
+        <request/>
+      </method>
+    </resource>
+    <resource path="kurancalis/public/api/v1/verselink/{id}" id="verselink">
+      <doc xml:lang="en" title="verselink"/>
+      <param name="id" type="xs:string" required="false" default="" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <method name="GET" id="get">
+        <doc xml:lang="en" title="get"/>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="add">
+        <doc xml:lang="en" title="add"/>
+        <request>
+          <param name="source_chapter" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="source_verse" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="target_chapter" type="xs:string" required="true" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="target_verse" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="delete">
+        <doc xml:lang="en" title="delete"/>
+        <request/>
+      </method>
+    </resource>
+  </resources>
+</application>
